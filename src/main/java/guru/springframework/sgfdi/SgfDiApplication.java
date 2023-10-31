@@ -15,8 +15,10 @@ public class SgfDiApplication {
 //		SpringApplication.run(SgfDiApplication.class, args);
 		ApplicationContext context = SpringApplication.run(SgfDiApplication.class, args);
 		MyController myController = (MyController) context.getBean("myController");
-		String greeting = myController.sayHello();
-		//System.out.println(greeting);
+
+		System.out.println("----------Primary Bean");
+		System.out.println(myController.sayHello());
+		//if we delete qualifier in one of the controllers, primary service will be injected to the controller without the primary annotation
 		System.out.println("------Property");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) context.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
