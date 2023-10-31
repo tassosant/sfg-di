@@ -1,9 +1,6 @@
 package guru.springframework.sgfdi;
 
-import guru.springframework.sgfdi.controllers.ConstructorInjectedController;
-import guru.springframework.sgfdi.controllers.MyController;
-import guru.springframework.sgfdi.controllers.PropertyInjectedController;
-import guru.springframework.sgfdi.controllers.SetterInjectedController;
+import guru.springframework.sgfdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +11,17 @@ public class SgfDiApplication {
 	public static void main(String[] args) {
 //		SpringApplication.run(SgfDiApplication.class, args);
 		ApplicationContext context = SpringApplication.run(SgfDiApplication.class, args);
+
+		I18nController i18nController = (I18nController)  context.getBean("i18nController");
+		//in application.properties write the line spring.profiles.active=ES or spring.profiles.active=EN so the spring will recognize which bean to load into the context
+		System.out.println(i18nController.sayHello());
+
+
+
+
 		MyController myController = (MyController) context.getBean("myController");
+
+
 
 		System.out.println("----------Primary Bean");
 		System.out.println(myController.sayHello());
