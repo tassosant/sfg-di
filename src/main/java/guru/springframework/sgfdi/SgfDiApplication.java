@@ -12,6 +12,11 @@ public class SgfDiApplication {
 //		SpringApplication.run(SgfDiApplication.class, args);
 		ApplicationContext context = SpringApplication.run(SgfDiApplication.class, args);
 
+		PetController petController = context.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
+
+
 		I18nController i18nController = (I18nController)  context.getBean("i18nController");
 		//in application.properties write the line spring.profiles.active=ES or spring.profiles.active=EN so the spring will recognize which bean to load into the context
 		System.out.println(i18nController.sayHello());
